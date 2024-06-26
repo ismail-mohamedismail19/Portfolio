@@ -1470,6 +1470,26 @@
             });
         });
 
+
+
+        // delay-0.3s media 576px
+                document.addEventListener("DOMContentLoaded", function() {
+            function updateWowDelay() {
+                if (window.innerWidth <= 576) {
+                    const elements = document.querySelectorAll('[data-wow-delay]');
+                    elements.forEach(function(element) {
+                        element.setAttribute('data-wow-delay', '0.3s');
+                    });
+                }
+            }
+    
+            // Initial check
+            updateWowDelay();
+    
+            // Update on window resize
+            window.addEventListener('resize', updateWowDelay);
+        });
+
     </script>
 </body>
 
