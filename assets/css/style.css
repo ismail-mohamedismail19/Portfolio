@@ -10,7 +10,7 @@ body {
   overflow-x: hidden;
 }
 .back-ground{
-  background-image: url(/images/slider/body-bg.jpg)
+  background-image: url(../images/slider/body-bg.jpg)
 }
 :root {
   --main-color: #80db66;
