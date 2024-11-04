@@ -126,19 +126,45 @@
 
 
 
-    <h1>تحميل ملف PDF</h1>
-    <button onclick="downloadPDF()">تحميل الملف</button>
+    <h1>رفع ملف PDF</h1>
+    
+    <!-- حقل رفع الملف -->
+    <input type="file" id="fileInput" accept=".pdf">
+    <button onclick="uploadFile()">رفع الملف</button>
 
     <script>
-        function downloadPDF() {
-            // رابط الملف الذي تريد تحميله
-            const pdfUrl = 'path/to/your-file.pdf';  // ضع هنا رابط ملف PDF
+        function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0]; // الحصول على الملف المرفوع
 
-            // إنشاء رابط للتحميل
-            const link = document.createElement('a');
-            link.href = pdfUrl;
-            link.download = 'your-file.pdf';  // اسم الملف عند التحميل
-            link.click();
+            if (file) {
+                // تحقق من أن الملف بصيغة PDF
+                if (file.type === 'application/pdf') {
+                    // يمكنك تنفيذ العمليات هنا مثل رفع الملف إلى خادم باستخدام AJAX أو Fetch API
+                    console.log("تم اختيار ملف PDF:", file.name);
+                    
+                    // مثال على إرسال الملف باستخدام Fetch API
+                    const formData = new FormData();
+                    formData.append('file', file);
+
+                    fetch('upload_endpoint', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('تم رفع الملف بنجاح:', data);
+                    })
+                    .catch(error => {
+                        console.error('خطأ أثناء رفع الملف:', error);
+                    });
+
+                } else {
+                    alert("يرجى اختيار ملف بصيغة PDF فقط.");
+                }
+            } else {
+                alert("لم يتم اختيار ملف.");
+            }
         }
     </script>
 
