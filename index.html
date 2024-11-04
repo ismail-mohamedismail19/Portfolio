@@ -126,6 +126,21 @@
 
 
 
+    <h1>تحميل ملف PDF</h1>
+    <button onclick="downloadPDF()">تحميل الملف</button>
+
+    <script>
+        function downloadPDF() {
+            // رابط الملف الذي تريد تحميله
+            const pdfUrl = 'path/to/your-file.pdf';  // ضع هنا رابط ملف PDF
+
+            // إنشاء رابط للتحميل
+            const link = document.createElement('a');
+            link.href = pdfUrl;
+            link.download = 'your-file.pdf';  // اسم الملف عند التحميل
+            link.click();
+        }
+    </script>
 
 
 
