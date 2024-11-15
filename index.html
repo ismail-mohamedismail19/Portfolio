@@ -124,52 +124,6 @@
     </section>
 
 
-
-
-    <h1>رفع ملف PDF</h1>
-    
-    <!-- حقل رفع الملف -->
-    <input type="file" id="fileInput" accept=".pdf">
-    <button onclick="uploadFile()">رفع الملف</button>
-
-    <script>
-        function uploadFile() {
-            const fileInput = document.getElementById('fileInput');
-            const file = fileInput.files[0]; // الحصول على الملف المرفوع
-
-            if (file) {
-                // تحقق من أن الملف بصيغة PDF
-                if (file.type === 'application/pdf') {
-                    // يمكنك تنفيذ العمليات هنا مثل رفع الملف إلى خادم باستخدام AJAX أو Fetch API
-                    console.log("تم اختيار ملف PDF:", file.name);
-                    
-                    // مثال على إرسال الملف باستخدام Fetch API
-                    const formData = new FormData();
-                    formData.append('file', file);
-
-                    fetch('upload_endpoint', {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log('تم رفع الملف بنجاح:', data);
-                    })
-                    .catch(error => {
-                        console.error('خطأ أثناء رفع الملف:', error);
-                    });
-
-                } else {
-                    alert("يرجى اختيار ملف بصيغة PDF فقط.");
-                }
-            } else {
-                alert("لم يتم اختيار ملف.");
-            }
-        }
-    </script>
-
-
-
     <!-- ====== about-area-start
         ==================================================== -->
     <section id="about" class="about-area over-hidden back-ground">
